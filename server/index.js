@@ -1,16 +1,16 @@
-import connectDB from "./src/config/db.js";
+import connectDB from "./config/db.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import userRoutes from "./src/routes/user.Routes.js";
-import productRoutes from "./src/routes/product.Routes.js";
-import categoryRouter from "./src/routes/categories.Routes.js";
-import authRoutes from "./src/routes/auth.Routes.js";
+// import userRoutes from "./routes/user.Routes.js";
+// import productRoutes from "./routes/product.Routes.js";
+import categoryRouter from "./routes/categories.Routes.js";
+import authRoutes from "./routes/auth.Routes.js";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
-import { notFound } from "./src/middleware/notFound.Middleware.js"
-import { globalErrorHandler } from "./src/middleware/errorHandler.Middleware.js"
-import { globalRateLimit } from "./src/middleware/rateLimit.Middleware.js";
+import { notFound } from "./middleware/notFound.Middleware.js"
+import { globalErrorHandler } from "./middleware/errorHandler.Middleware.js"
+import { globalRateLimit } from "./middleware/rateLimit.Middleware.js";
 dotenv.config();
 connectDB();
 
@@ -27,8 +27,8 @@ app.use(cors({
     credentials: true,
 }));
 // API routes
-app.use("/api", userRoutes);
-app.use("/api", productRoutes); //test done
+// app.use("/api", userRoutes);
+// app.use("/api", productRoutes); //test done
 app.use("/api", categoryRouter); //test done
 app.use("/api", authRoutes)
 
